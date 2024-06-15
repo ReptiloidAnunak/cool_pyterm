@@ -30,7 +30,7 @@ def center_multiline_text(text, fore_color=Fore.WHITE, back_color=Back.BLACK):
         print(colored_text)
 
 
-def terminal_set_color_block(text: str = None,
+def terminal_set_style_block(text: str = None,
                              bold: bool = False,
                              text_color=None,
                              back_color=None,
@@ -42,21 +42,19 @@ def terminal_set_color_block(text: str = None,
         exit()
 
     if location == 'c':
-        padding = ' ' * 100
+        padding = ' ' * 50
 
         if '\n' in text:
             lines_lst = text.split('\n')
             lines_formated = []
             for line in lines_lst:
-                line = padding + line + ' ' * 400
+                line = padding + line + ' ' * 200
                 lines_formated.append(line)
 
             text = '\n'.join(lines_formated)
 
-
         else:
-
-            text = padding + text + ' ' * 400
+            text = padding + text + ' ' * 50
             # Формируем центрированный текст с пробелами по бокам
             text = text
     if set_back_after:
@@ -64,14 +62,38 @@ def terminal_set_color_block(text: str = None,
         text = back_color + text_color + text
     else:
         text = back_color + text_color + text + Style.RESET_ALL
+    if bold:
+        text = Style.BRIGHT + text
+    return text
 
-    print(text)
+print(
 
 
-terminal_set_color_block(text='COOL\nPYTERM\ncreated by ReptiloidAnunak',
-
+terminal_set_style_block(text='\nCOOL PYTERM\ncreated by ReptiloidAnunak',
+                         bold=True,
                          text_color=Fore.BLACK,
                          back_color=Back.WHITE,
-                         set_back_after=0,
-                         location='c')
-print("ыуааа")
+                         set_back_after=False,
+                         location='c'),
+
+
+terminal_set_style_block(text='\nCOOL PYTERM\ncreated by ReptiloidAnunak\n',
+                         bold=False,
+                         text_color=Fore.WHITE,
+                         back_color=Back.BLACK,
+                         set_back_after=False,
+                         location=''),
+
+terminal_set_style_block(text='\nCOOL PYTERM\ncreated by ReptiloidAnunak\n',
+                         bold=False,
+                         text_color=Fore.RED,
+                         back_color=Back.BLACK,
+                         set_back_after=True,
+                         location=''),
+terminal_set_style_block(text='\nCOOL PYTERM\ncreated by ReptiloidAnunak',
+                         bold=False,
+                         text_color=Fore.LIGHTRED_EX,
+                         back_color=Back.GREEN,
+                         set_back_after=True,
+                         location='')
+)
