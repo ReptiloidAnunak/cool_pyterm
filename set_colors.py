@@ -12,6 +12,6 @@ def terminal_set_color_block(name_function: str,
     print(name_function)
 
 
-terminal_set_color_block('ДЖИГУРДА', set_all_str_color=False)
-print("фацфафцацфа")
-print("хуйпизда")
+terminal_set_color_block('adb', set_all_str_color=False)
+print("111")
+print("ddd")
